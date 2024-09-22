@@ -7,10 +7,10 @@
         </a>
     </li>
     <li class="nav-heading">DATA MANAGE MASTER</li>
-    {{-- <li class="nav-item">
+    <li class="nav-item">
         <a class="nav-link {{ request()->routeIs('user.*') ? 'active' : '' }}" href="{{ route('user.index') }}">
             <i class="ri ri-user-line"></i>
             <span>DATA USER</span>
         </a>
-    </li> --}}
+    </li>
 </ul>

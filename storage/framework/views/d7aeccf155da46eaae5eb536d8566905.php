@@ -1,28 +1,27 @@
-@extends('layouts.master')
-@section('title', 'Halaman Manage User')
-@section('breadcrumb')
+<?php $__env->startSection('title', 'Halaman Manage User'); ?>
+<?php $__env->startSection('breadcrumb'); ?>
     <li class="breadcrumb-item active">Halaman Manage User</li>
-@endsection
-@push('css')
+<?php $__env->stopSection(); ?>
+<?php $__env->startPush('css'); ?>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/2.1.5/css/dataTables.dataTables.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-@endpush
-@section('content')
+<?php $__env->stopPush(); ?>
+<?php $__env->startSection('content'); ?>
     <div class="row justify-content-center">
         <div class="col-md-12">
-            @if (session('success'))
+            <?php if(session('success')): ?>
                 <script>
                     Swal.fire({
                         title: 'Berhasil!',
-                        text: "{{ session('success') }}",
+                        text: "<?php echo e(session('success')); ?>",
                         icon: 'success',
                         confirmButtonText: 'OK'
                     });
                 </script>
-            @endif
+            <?php endif; ?>
             <div class="d-flex justify-content-end mb-3">
-                <a href="{{ route('user.create') }}" class="btn btn-primary btn-sm">
+                <a href="<?php echo e(route('user.create')); ?>" class="btn btn-primary btn-sm">
                     <i class="fas fa-user-plus"></i> Tambah Data
                 </a>
             </div>
@@ -42,39 +41,39 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($user as $item)
+                            <?php $__currentLoopData = $user; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <tr>
-                                    <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $item->name }}</td>
-                                    <td>{{ $item->email }}</td>
-                                    <td>{{ $item->role }}</td>
+                                    <td><?php echo e($loop->iteration); ?></td>
+                                    <td><?php echo e($item->name); ?></td>
+                                    <td><?php echo e($item->email); ?></td>
+                                    <td><?php echo e($item->role); ?></td>
                                     <td>
 
                                         <div class="d-grid gap-2 d-md-flex justify-content-md">
-                                            <a href="{{ route('user.edit', $item->id) }}"
+                                            <a href="<?php echo e(route('user.edit', $item->id)); ?>"
                                                 class="btn btn-sm text-white bg-warning"><i class="ri ri-pencil-line"></i>
                                                 Edit</a>
-                                            <form id="delete-form-{{ $item->id }}"
-                                                action="{{ route('user.destroy', $item->id) }}" method="POST"
+                                            <form id="delete-form-<?php echo e($item->id); ?>"
+                                                action="<?php echo e(route('user.destroy', $item->id)); ?>" method="POST"
                                                 style="display: none;">
-                                                @csrf
-                                                @method('DELETE')
+                                                <?php echo csrf_field(); ?>
+                                                <?php echo method_field('DELETE'); ?>
                                             </form>
                                             <button class="btn btn-sm text-white bg-danger"
-                                                onclick="confirmDelete({{ $item->id }})"><i
+                                                onclick="confirmDelete(<?php echo e($item->id); ?>)"><i
                                                     class="ri ri-delete-bin-5-line"></i> Hapus</button>
                                         </div>
                                     </td>
                                 </tr>
-                            @endforeach
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
     </div>
-@endsection
-@push('js')
+<?php $__env->stopSection(); ?>
+<?php $__env->startPush('js'); ?>
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <script src="https://cdn.datatables.net/2.1.5/js/dataTables.js"></script>
     <script>
@@ -123,4 +122,6 @@
             })
         }
     </script>
-@endpush
+<?php $__env->stopPush(); ?>
+
+<?php echo $__env->make('layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\laragon\www\smk-management\resources\views/user/index.blade.php ENDPATH**/ ?>
