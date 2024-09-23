@@ -13,4 +13,10 @@
             <span>DATA USER</span>
         </a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link {{ request()->routeIs('jurusan.*') ? 'active' : '' }}" href="{{ route('jurusan.index') }}">
+            <i class="ri  ri-book-2-line"></i>
+            <span>DATA JURUSAN</span>
+        </a>
+    </li>
 </ul>

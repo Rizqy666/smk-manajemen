@@ -13,5 +13,11 @@
             <span>DATA USER</span>
         </a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link <?php echo e(request()->routeIs('jurusan.*') ? 'active' : ''); ?>" href="<?php echo e(route('jurusan.index')); ?>">
+            <i class="ri  ri-book-2-line"></i>
+            <span>DATA JURUSAN</span>
+        </a>
+    </li>
 </ul>
 <?php /**PATH C:\laragon\www\smk-management\resources\views/components/sidebar.blade.php ENDPATH**/ ?>

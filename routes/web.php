@@ -1,8 +1,10 @@
 <?php
 
-use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\JurusanController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +23,21 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::middleware(['auth', 'role:admin'])->group(function () {
-    Route::resource('user', UserController::class);
+Route::middleware('auth')->group(function () {
+    // Rute untuk pengisian profil
+    Route::get('/lengkapi-profil', [ProfileController::class, 'showCompleteProfileForm'])->name('profile.complete');
+    Route::post('/lengkapi-profil', [ProfileController::class, 'completeProfile'])->name('profile.complete.store');
+    // route complete
+    Route::middleware('profile.complete')->group(function () {
+        Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+        Route::post('/send-verification', [ProfileController::class, 'sendVerification'])->name('profile.send.verification');
+
+        Route::post('/verify', [ProfileController::class, 'verifyCode'])->name('profile.verify');
+
+        // route admin
+        Route::middleware('role:admin')->group(function () {
+            Route::resource('user', UserController::class);
+            Route::resource('jurusan', JurusanController::class);
+        });
+    });
 });
