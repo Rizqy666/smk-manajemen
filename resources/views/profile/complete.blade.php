@@ -155,18 +155,21 @@
                 allowClear: true
             });
         });
-        window.onload = function() {
-            Swal.fire({
-                icon: 'warning',
-                title: 'Profil Belum Lengkap',
-                text: 'Anda harus melengkapi profil terlebih dahulu sebelum melanjutkan.',
-                confirmButtonText: 'Lengkapi Profil'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    // window.history.back();
-                }
-            });
-        };
+        @if ($profileIncomplete)
+            window.onload = function() {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Profil Belum Lengkap',
+                    text: 'Anda harus melengkapi profil terlebih dahulu sebelum melanjutkan.',
+                    confirmButtonText: 'Lengkapi Profil'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // Redirect ke halaman untuk melengkapi profil
+                        // window.location.href = '{{ route('profile.complete') }}';
+                    }
+                });
+            };
+        @endif
 
         function sendVerification(type) {
             let emailOrPhone = (type === 'email') ? document.getElementById('email').value : document.getElementById(
