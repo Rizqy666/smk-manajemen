@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\JurusanController;
+use App\Http\Controllers\KelasController;
 use App\Http\Controllers\ProfileController;
 
 /*
@@ -38,6 +39,7 @@ Route::middleware('auth')->group(function () {
         Route::middleware('role:admin')->group(function () {
             Route::resource('user', UserController::class);
             Route::resource('jurusan', JurusanController::class);
+            Route::resource('kelas', KelasController::class);
         });
     });
 });

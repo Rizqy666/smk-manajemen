@@ -19,5 +19,11 @@
             <span>DATA JURUSAN</span>
         </a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link <?php echo e(request()->routeIs('kelas.*') ? 'active' : ''); ?>" href="<?php echo e(route('kelas.index')); ?>">
+            <i class="ri  ri-building-line"></i>
+            <span>DATA KELAS</span>
+        </a>
+    </li>
 </ul>
 <?php /**PATH C:\laragon\www\smk-management\resources\views/components/sidebar.blade.php ENDPATH**/ ?>
