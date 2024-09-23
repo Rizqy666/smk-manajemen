@@ -22,18 +22,6 @@
                         icon: 'success',
                         confirmButtonText: 'OK'
                     });
-                    window.onload = function() {
-                        Swal.fire({
-                            icon: 'warning',
-                            title: 'Profil Belum Lengkap',
-                            text: 'Anda harus melengkapi profil terlebih dahulu sebelum melanjutkan.',
-                            confirmButtonText: 'Lengkapi Profil'
-                        }).then((result) => {
-                            if (result.isConfirmed) {
-                                // window.history.back();
-                            }
-                        });
-                    };
                 </script>
             @endif
             <div class="card">
@@ -41,7 +29,6 @@
                 <div class="card-body">
                     <form action="{{ route('profile.complete.store') }}" method="POST">
                         @csrf
-                        <!-- Alamat -->
                         <div class='mb-3'>
                             <label class="form-label" for="name">Nama Lengkap</label>
                             <input type="name" name="name" class="form-control" id="name"
@@ -50,9 +37,6 @@
                                 <div>{{ $message }}</div>
                             @enderror
                         </div>
-
-
-                        <!-- Email -->
                         <div class='mb-3'>
                             <label class="form-label" for="email">Email</label>
                             <div class="input-group">
@@ -65,8 +49,6 @@
                                 <div>{{ $message }}</div>
                             @enderror
                         </div>
-
-                        <!-- Nomor Telepon -->
                         <div class='mb-3'>
                             <label class="form-label" for="nomor_telepon">Nomor Telepon</label>
                             <div class="input-group">
@@ -80,8 +62,6 @@
                                 <div>{{ $message }}</div>
                             @enderror
                         </div>
-
-                        <!-- Tempat Lahir -->
                         <div class='mb-3'>
                             <label class="form-label" for="tempat_lahir">Tempat Lahir</label>
                             <input type="text" name="tempat_lahir" class="form-control" id="tempat_lahir"
@@ -90,8 +70,6 @@
                                 <div>{{ $message }}</div>
                             @enderror
                         </div>
-
-                        <!-- Tanggal Lahir -->
                         <div class='mb-3'>
                             <label class="form-label" for="tanggal_lahir">Tanggal Lahir</label>
                             <input type="date" name="tanggal_lahir" class="form-control" id="tanggal_lahir"
@@ -100,8 +78,6 @@
                                 <div>{{ $message }}</div>
                             @enderror
                         </div>
-
-                        <!-- Jenis Kelamin -->
                         <div class='mb-3'>
                             <label class="form-label" for="jenis_kelamin">Jenis Kelamin</label>
                             <select name="jenis_kelamin" class="form-control"id="jenis_kelamin" required>
@@ -117,8 +93,6 @@
                                 <div>{{ $message }}</div>
                             @enderror
                         </div>
-
-                        <!-- Agama -->
                         <div class='mb-3'>
                             <label class="form-label" for="agama">Agama</label>
                             <select name="agama" id="agama" class="form-control" required>
@@ -181,18 +155,29 @@
                 allowClear: true
             });
         });
+        window.onload = function() {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Profil Belum Lengkap',
+                text: 'Anda harus melengkapi profil terlebih dahulu sebelum melanjutkan.',
+                confirmButtonText: 'Lengkapi Profil'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // window.history.back();
+                }
+            });
+        };
 
         function sendVerification(type) {
             let emailOrPhone = (type === 'email') ? document.getElementById('email').value : document.getElementById(
                 'nomor_telepon').value;
 
             if (emailOrPhone) {
-                // Kirim AJAX request untuk verifikasi
                 fetch('{{ route('profile.send.verification') }}', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
-                            'X-CSRF-TOKEN': '{{ csrf_token() }}' // Pastikan CSRF token disertakan
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
                         },
                         body: JSON.stringify({
                             type: type,
@@ -203,13 +188,13 @@
                         if (!response.ok) {
                             throw new Error('Network response was not ok');
                         }
-                        return response.json(); // Parsing responsenya sebagai JSON
+                        return response.json();
                     })
                     .then(data => {
-                        alert(data.message); // Tampilkan pesan sukses dari server
+                        alert(data.message);
                     })
                     .catch(error => {
-                        console.error('Error:', error); // Tampilkan error di console
+                        console.error('Error:', error);
                     });
             } else {
                 alert("Masukkan " + (type === 'email' ? "email" : "nomor telepon") + " terlebih dahulu.");

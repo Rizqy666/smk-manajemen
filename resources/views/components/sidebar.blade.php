@@ -19,4 +19,10 @@
             <span>DATA JURUSAN</span>
         </a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link {{ request()->routeIs('kelas.*') ? 'active' : '' }}" href="{{ route('kelas.index') }}">
+            <i class="ri  ri-building-line"></i>
+            <span>DATA KELAS</span>
+        </a>
+    </li>
 </ul>
