@@ -48,11 +48,12 @@
                 </li>
 
                 <!-- Profile -->
-                
-
-
-
-
+                <li>
+                    <a class="dropdown-item d-flex align-items-center" href="<?php echo e(route('profile.complete')); ?>">
+                        <i class="bi bi-person"></i>
+                        <span>Profile Details</span>
+                    </a>
+                </li>
                 <li>
                     <hr class="dropdown-divider">
                 </li>

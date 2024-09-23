@@ -127,20 +127,12 @@
                 </li>
 
                 <!-- Profile -->
-                {{-- @if (Auth::check())
-                    <!-- Mengecek apakah pengguna sedang login -->
-                    <a class="dropdown-item d-flex align-items-center"
-                        href="{{ route('user.profile.id', Auth::user()->id) }}">
+                <li>
+                    <a class="dropdown-item d-flex align-items-center" href="{{ route('profile.complete') }}">
                         <i class="bi bi-person"></i>
-                        <span>My Profile</span>
+                        <span>Profile Details</span>
                     </a>
-                @else
-                    <p>No user found</p>
-                @endif --}}
-
-
-
-
+                </li>
                 <li>
                     <hr class="dropdown-divider">
                 </li>
