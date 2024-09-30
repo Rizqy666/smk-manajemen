@@ -44,7 +44,8 @@
                                 <tr>
                                     <td><?php echo e($loop->iteration); ?></td>
                                     <td><?php echo e($item->nama_kelas); ?></td>
-                                    <td><?php echo e($item->guru->nama_guru ?? 'Belum ada wali kelas'); ?></td>
+                                    <td><?php echo e($item->wali_kelas ? $item->wali_kelas->name : 'Tidak ada wali kelas'); ?></td>
+
                                     <td>
 
                                         <div class="d-grid gap-2 d-md-flex justify-content-md">

@@ -45,7 +45,8 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $item->nama_kelas }}</td>
-                                    <td>{{ $item->guru->nama_guru ?? 'Belum ada wali kelas' }}</td>
+                                    <td>{{ $item->wali_kelas ? $item->wali_kelas->name : 'Tidak ada wali kelas' }}</td>
+
                                     <td>
 
                                         <div class="d-grid gap-2 d-md-flex justify-content-md">
