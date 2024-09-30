@@ -13,8 +13,10 @@ return new class extends Migration {
         Schema::create('user_details', function (Blueprint $table) {
             $table->id();
             $table->boolean('profile_complete')->default(false);
+            $table->boolean('email_verified')->default(false);
+            $table->boolean('nomor_telepon_verified')->default(false);
+            $table->string('verification_code')->nullable();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-
             $table->foreignId('jurusan_id')->nullable()->constrained()->onDelete('set null');
             $table->text('alamat');
             $table->string('email')->references('email')->on('users')->onDelete('cascade');

@@ -41,11 +41,11 @@
                                 id="nama_kelas" required>
                         </div>
                         <div class="mb-3">
-                            <label for="guru_id" class="form-label">Wali Kelas</label>
-                            <select name="guru_id" id="guru_id" class="form-control select2">
+                            <label for="wali_kelas_id" class="form-label">Wali Kelas</label>
+                            <select name="wali_kelas_id" id="wali_kelas_id" class="form-control select2">
                                 <option value="" disabled selected>-- Pilih Wali Kelas --</option>
                                 @foreach ($gurus as $guru)
-                                    <option value="{{ $guru->id }}">{{ $guru->nama_guru }}</option>
+                                    <option value="{{ $guru->id }}">{{ $guru->name }}</option>
                                 @endforeach
                             </select>
                         </div>

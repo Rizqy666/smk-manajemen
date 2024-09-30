@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Kelas;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,7 @@ class KelasController extends Controller
      */
     public function index()
     {
-        $kelas = Kelas::all();
+        $kelas = Kelas::with('wali_kelas')->get();
         return view('kelas.index', compact('kelas'));
     }
 
@@ -21,7 +22,8 @@ class KelasController extends Controller
      */
     public function create()
     {
-        //
+        $gurus = User::where('role', 'guru')->get();
+        return view('kelas.create', compact('gurus'));
     }
 
     /**
@@ -29,7 +31,12 @@ class KelasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'nama_kelas' => 'required|string',
+            'wali_kelas_id' => 'required|integer|exists:users,id|unique:kelas,wali_kelas_id',
+        ]);
+        Kelas::create($validated);
+        return redirect()->route('kelas.index')->with('success', 'Berhasil menambahkan kelas.');
     }
 
     /**
@@ -45,7 +52,8 @@ class KelasController extends Controller
      */
     public function edit(Kelas $kelas)
     {
-        //
+        $gurus = User::where('role', 'guru')->get();
+        return view('kelas.edit', compact('kelas', 'gurus'));
     }
 
     /**
@@ -53,7 +61,12 @@ class KelasController extends Controller
      */
     public function update(Request $request, Kelas $kelas)
     {
-        //
+        $validated = $request->validate([
+            'nama_kelas' => 'required|string|max:255',
+            'wali_kelas_id' => 'required|integer|exists:users,id|unique:kelas,wali_kelas_id,' . $kelas->id,
+        ]);
+        $kelas->update($validated);
+        return redirect()->route('kelas.index')->with('success', 'Berhasil memperbaharui kelas.');
     }
 
     /**
@@ -61,6 +74,7 @@ class KelasController extends Controller
      */
     public function destroy(Kelas $kelas)
     {
-        //
+        $kelas->delete();
+        return redirect()->route('kelas.index')->with('success', 'Berhasil menghapus kelas.');
     }
 }

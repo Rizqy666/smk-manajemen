@@ -25,4 +25,10 @@
             <span>DATA KELAS</span>
         </a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link {{ request()->routeIs('mapel.*') ? 'active' : '' }}" href="{{ route('mapel.index') }}">
+            <i class="ri  ri-artboard-line"></i>
+            <span>DATA MATA PELAJARAN</span>
+        </a>
+    </li>
 </ul>

@@ -25,5 +25,11 @@
             <span>DATA KELAS</span>
         </a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link <?php echo e(request()->routeIs('mapel.*') ? 'active' : ''); ?>" href="<?php echo e(route('mapel.index')); ?>">
+            <i class="ri  ri-artboard-line"></i>
+            <span>DATA MATA PELAJARAN</span>
+        </a>
+    </li>
 </ul>
 <?php /**PATH C:\laragon\www\smk-management\resources\views/components/sidebar.blade.php ENDPATH**/ ?>
