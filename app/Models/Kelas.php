@@ -18,4 +18,8 @@ class Kelas extends Model
     {
         return $this->belongsTo(User::class, 'wali_kelas_id');
     }
+    public function jadwalPelajaran()
+    {
+        return $this->hasMany(JadwalPelajaran::class);
+    }
 }

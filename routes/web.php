@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\JadwalPelajaranController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -7,6 +8,7 @@ use App\Http\Controllers\JurusanController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\MataPelajaranController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TahunAjaranController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,6 +48,11 @@ Route::middleware('auth')->group(function () {
             Route::resource('kelas', KelasController::class)->parameters([
                 'kelas' => 'kelas',
             ]);
+            Route::resource('tahunAjaran', TahunAjaranController::class);
+            Route::resource('jadwalPelajaran', JadwalPelajaranController::class);
+            Route::get('jadwalPelajaran-all', [JadwalPelajaranController::class, 'showAllJadwal'])->name('jadwalPelajaran.showAll');
+
+            Route::get('/get-guru-pengajar/{mataPelajaranId}', [JadwalPelajaranController::class, 'getGuruPengajar']);
         });
     });
 });
