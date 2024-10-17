@@ -24,6 +24,10 @@
                     });
                 </script>
             @endif
+            <div class="d-flex justify-content-end mb-3">
+                <span
+                    class="badge text-bg-{{ $pendaftarans->status == 'Pending' ? 'warning' : ($pendaftarans->status == 'Diterima' ? 'success' : 'danger') }}">{{ $pendaftarans->status ?? 'Belum ada data' }}</span>
+            </div>
             <div class="card">
                 <div class="card-header">Detail Profile</div>
                 <div class="card-body">
