@@ -45,6 +45,22 @@ class DatabaseSeeder extends Seeder
                 'role' => 'staff',
             ],
         ]);
+
+        DB::table('user_details')->insert([
+            [
+                'user_id' => 1,
+                'profile_complete' => 1,
+                'email' => 'admin@example.com',
+                'tempat_lahir' => 'Bandung',
+                'tanggal_lahir' => '2000-01-01',
+                'jenis_kelamin' => 'L',
+                'agama' => 'Islam',
+                'alamat' => 'Jl. Jend. Sudirman No. 1',
+                'nomor_telepon' => '081234567890',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+        ]);
         $ketuaJurusan1 = DB::table('users')->where('role', 'guru')->first();
         $ketuaJurusan2 = DB::table('users')->where('role', 'staff')->first();
 
@@ -63,36 +79,6 @@ class DatabaseSeeder extends Seeder
                     'updated_at' => now(),
                 ],
                 [
-                    'nama_jurusan' => 'Teknik Informatika 3',
-                    'ketua_jurusan_id' => $ketuaJurusan1->id,
-                    'created_at' => now(),
-                    'updated_at' => now(),
-                ],
-                [
-                    'nama_jurusan' => 'Teknik Informatika 4',
-                    'ketua_jurusan_id' => $ketuaJurusan1->id,
-                    'created_at' => now(),
-                    'updated_at' => now(),
-                ],
-                [
-                    'nama_jurusan' => 'Teknik Informatika 5',
-                    'ketua_jurusan_id' => $ketuaJurusan1->id,
-                    'created_at' => now(),
-                    'updated_at' => now(),
-                ],
-                [
-                    'nama_jurusan' => 'Teknik Informatika 6',
-                    'ketua_jurusan_id' => $ketuaJurusan1->id,
-                    'created_at' => now(),
-                    'updated_at' => now(),
-                ],
-                [
-                    'nama_jurusan' => 'Teknik Informatika 7',
-                    'ketua_jurusan_id' => $ketuaJurusan1->id,
-                    'created_at' => now(),
-                    'updated_at' => now(),
-                ],
-                [
                     'nama_jurusan' => 'Teknik Mesin 1',
                     'ketua_jurusan_id' => $ketuaJurusan2->id,
                     'created_at' => now(),
@@ -100,54 +86,6 @@ class DatabaseSeeder extends Seeder
                 ],
                 [
                     'nama_jurusan' => 'Teknik Mesin 2',
-                    'ketua_jurusan_id' => $ketuaJurusan2->id,
-                    'created_at' => now(),
-                    'updated_at' => now(),
-                ],
-                [
-                    'nama_jurusan' => 'Teknik Mesin 3',
-                    'ketua_jurusan_id' => $ketuaJurusan2->id,
-                    'created_at' => now(),
-                    'updated_at' => now(),
-                ],
-                [
-                    'nama_jurusan' => 'Teknik Mesin 4',
-                    'ketua_jurusan_id' => $ketuaJurusan2->id,
-                    'created_at' => now(),
-                    'updated_at' => now(),
-                ],
-                [
-                    'nama_jurusan' => 'Teknik Mesin 5',
-                    'ketua_jurusan_id' => $ketuaJurusan2->id,
-                    'created_at' => now(),
-                    'updated_at' => now(),
-                ],
-                [
-                    'nama_jurusan' => 'Teknik Mesin 6',
-                    'ketua_jurusan_id' => $ketuaJurusan2->id,
-                    'created_at' => now(),
-                    'updated_at' => now(),
-                ],
-                [
-                    'nama_jurusan' => 'Teknik Mesin 7',
-                    'ketua_jurusan_id' => $ketuaJurusan2->id,
-                    'created_at' => now(),
-                    'updated_at' => now(),
-                ],
-                [
-                    'nama_jurusan' => 'Teknik Mesin 8',
-                    'ketua_jurusan_id' => $ketuaJurusan2->id,
-                    'created_at' => now(),
-                    'updated_at' => now(),
-                ],
-                [
-                    'nama_jurusan' => 'Teknik Mesin 10',
-                    'ketua_jurusan_id' => $ketuaJurusan2->id,
-                    'created_at' => now(),
-                    'updated_at' => now(),
-                ],
-                [
-                    'nama_jurusan' => 'Teknik Mesin 11',
                     'ketua_jurusan_id' => $ketuaJurusan2->id,
                     'created_at' => now(),
                     'updated_at' => now(),
@@ -171,36 +109,6 @@ class DatabaseSeeder extends Seeder
                     'updated_at' => now(),
                 ],
                 [
-                    'nama_kelas' => 'Teknik Informatika 3',
-                    'wali_kelas_id' => $walikelas->id,
-                    'created_at' => now(),
-                    'updated_at' => now(),
-                ],
-                [
-                    'nama_kelas' => 'Teknik Informatika 4',
-                    'wali_kelas_id' => $walikelas->id,
-                    'created_at' => now(),
-                    'updated_at' => now(),
-                ],
-                [
-                    'nama_kelas' => 'Teknik Informatika 5',
-                    'wali_kelas_id' => $walikelas->id,
-                    'created_at' => now(),
-                    'updated_at' => now(),
-                ],
-                [
-                    'nama_kelas' => 'Teknik Informatika 6',
-                    'wali_kelas_id' => $walikelas->id,
-                    'created_at' => now(),
-                    'updated_at' => now(),
-                ],
-                [
-                    'nama_kelas' => 'Teknik Informatika 7',
-                    'wali_kelas_id' => $walikelas->id,
-                    'created_at' => now(),
-                    'updated_at' => now(),
-                ],
-                [
                     'nama_kelas' => 'Teknik Mesin 1',
                     'wali_kelas_id' => $walikelas->id,
                     'created_at' => now(),
@@ -212,56 +120,49 @@ class DatabaseSeeder extends Seeder
                     'created_at' => now(),
                     'updated_at' => now(),
                 ],
-                [
-                    'nama_kelas' => 'Teknik Mesin 3',
-                    'wali_kelas_id' => $walikelas->id,
-                    'created_at' => now(),
-                    'updated_at' => now(),
-                ],
-                [
-                    'nama_kelas' => 'Teknik Mesin 4',
-                    'wali_kelas_id' => $walikelas->id,
-                    'created_at' => now(),
-                    'updated_at' => now(),
-                ],
-                [
-                    'nama_kelas' => 'Teknik Mesin 5',
-                    'wali_kelas_id' => $walikelas->id,
-                    'created_at' => now(),
-                    'updated_at' => now(),
-                ],
-                [
-                    'nama_kelas' => 'Teknik Mesin 6',
-                    'wali_kelas_id' => $walikelas->id,
-                    'created_at' => now(),
-                    'updated_at' => now(),
-                ],
-                [
-                    'nama_kelas' => 'Teknik Mesin 7',
-                    'wali_kelas_id' => $walikelas->id,
-                    'created_at' => now(),
-                    'updated_at' => now(),
-                ],
-                [
-                    'nama_kelas' => 'Teknik Mesin 8',
-                    'wali_kelas_id' => $walikelas->id,
-                    'created_at' => now(),
-                    'updated_at' => now(),
-                ],
-                [
-                    'nama_kelas' => 'Teknik Mesin 10',
-                    'wali_kelas_id' => $walikelas->id,
-                    'created_at' => now(),
-                    'updated_at' => now(),
-                ],
-                [
-                    'nama_kelas' => 'Teknik Mesin 11',
-                    'wali_kelas_id' => $walikelas->id,
-                    'created_at' => now(),
-                    'updated_at' => now(),
-                ],
             ]);
         }
-        User::factory()->count(20)->create();
+        User::factory()->count(10)->create();
+
+        DB::table('tahun_ajarans')->insert([
+            [
+                'tahun_awal' => 2023,
+                'tahun_akhir' => 2024,
+                'semester' => 'ganjil',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'tahun_awal' => 2023,
+                'tahun_akhir' => 2024,
+                'semester' => 'genap',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+        ]);
+        $gurus = User::where('role', 'guru')->get();
+
+        foreach ($gurus as $guru) {
+            DB::table('mata_pelajarans')->insert([
+                'nama_pelajaran' => 'Matematika',
+                'guru_pengajar' => $guru->id,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+
+            DB::table('mata_pelajarans')->insert([
+                'nama_pelajaran' => 'Bahasa Indonesia',
+                'guru_pengajar' => $guru->id,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+
+            DB::table('mata_pelajarans')->insert([
+                'nama_pelajaran' => 'IPA',
+                'guru_pengajar' => $guru->id,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+        }
     }
 }

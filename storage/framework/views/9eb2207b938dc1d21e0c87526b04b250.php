@@ -170,20 +170,20 @@ $message = $__bag->first($__errorArgs[0]); ?>
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
-                            <div class='mb-3'>
-                                <label class="form-label" for="alamat">Alamat</label>
-                                <textarea name="alamat" id="alamat" class="form-control" cols="30" rows="5"><?php echo e(old('alamat', $userDetail->alamat ?? '')); ?></textarea>
-                                <?php $__errorArgs = ['alamat'];
+                        </div>
+                        <div class='mb-3'>
+                            <label class="form-label" for="alamat">Alamat</label>
+                            <textarea name="alamat" id="alamat" class="form-control" cols="30" rows="5"><?php echo e(old('alamat', $userDetail->alamat ?? '')); ?></textarea>
+                            <?php $__errorArgs = ['alamat'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?>
-                                    <div><?php echo e($message); ?></div>
-                                <?php unset($message);
+                                <div><?php echo e($message); ?></div>
+                            <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
-                            </div>
                         </div>
                         <div class="card-footer">
                             <button type="submit" class="btn btn-primary btn-sm"> <i class="fas fa-save"></i>

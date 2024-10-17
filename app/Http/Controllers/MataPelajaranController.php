@@ -64,7 +64,14 @@ class MataPelajaranController extends Controller
      */
     public function update(Request $request, MataPelajaran $mataPelajaran)
     {
-        //
+        $validated = $request->validate([
+            'nama_pelajaran' => 'required|string',
+            'guru_pengajar' => 'required|integer|exists:users,id|unique:mata_pelajarans,guru_pengajar,' . $mataPelajaran->id,
+        ]);
+
+        $mataPelajaran->update($validated);
+
+        return redirect()->route('mapel.index')->with('success', 'Berhasil memperbarui mata pelajaran.');
     }
 
     /**

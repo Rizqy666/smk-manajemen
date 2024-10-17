@@ -19,10 +19,10 @@
                         icon: 'error',
                         title: 'Oops...',
                         html: `
-    <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-      <?php echo e($error); ?>
+                        <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <?php echo e($error); ?>
 
-    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 `,
                     });
                 </script>
@@ -73,10 +73,6 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
                         </div>
-
-
-
-
                     </div>
                     <div class="card-footer">
                         <a href="<?php echo e(route('mapel.index')); ?>" class="btn btn-secondary btn-sm"> <i

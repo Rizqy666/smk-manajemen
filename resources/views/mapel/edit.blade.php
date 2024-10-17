@@ -20,9 +20,9 @@
                         icon: 'error',
                         title: 'Oops...',
                         html: `
-    @foreach ($errors->all() as $error)
-      {{ $error }}
-    @endforeach
+                        @foreach ($errors->all() as $error)
+                        {{ $error }}
+                        @endforeach
 `,
                     });
                 </script>
@@ -58,10 +58,6 @@
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
-
-
-
-
                     </div>
                     <div class="card-footer">
                         <a href="{{ route('mapel.index') }}" class="btn btn-secondary btn-sm"> <i
