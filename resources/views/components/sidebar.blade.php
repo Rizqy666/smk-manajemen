@@ -45,4 +45,10 @@
             <span>DATA JADWAL PELAJARAN</span>
         </a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link {{ request()->routeIs('siswa.*') ? 'active' : '' }}" href="{{ route('siswa.index') }}">
+            <i class="ri  ri-alarm-line"></i>
+            <span>DATA SISWA</span>
+        </a>
+    </li>
 </ul>

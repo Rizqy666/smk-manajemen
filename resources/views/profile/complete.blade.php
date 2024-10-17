@@ -122,13 +122,13 @@
                             @error('agama')
                                 <div>{{ $message }}</div>
                             @enderror
-                            <div class='mb-3'>
-                                <label class="form-label" for="alamat">Alamat</label>
-                                <textarea name="alamat" id="alamat" class="form-control" cols="30" rows="5">{{ old('alamat', $userDetail->alamat ?? '') }}</textarea>
-                                @error('alamat')
-                                    <div>{{ $message }}</div>
-                                @enderror
-                            </div>
+                        </div>
+                        <div class='mb-3'>
+                            <label class="form-label" for="alamat">Alamat</label>
+                            <textarea name="alamat" id="alamat" class="form-control" cols="30" rows="5">{{ old('alamat', $userDetail->alamat ?? '') }}</textarea>
+                            @error('alamat')
+                                <div>{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="card-footer">
                             <button type="submit" class="btn btn-primary btn-sm"> <i class="fas fa-save"></i>

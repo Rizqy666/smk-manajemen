@@ -51,8 +51,8 @@ Route::middleware('auth')->group(function () {
             Route::resource('tahunAjaran', TahunAjaranController::class);
             Route::resource('jadwalPelajaran', JadwalPelajaranController::class);
             Route::get('jadwalPelajaran-all', [JadwalPelajaranController::class, 'showAllJadwal'])->name('jadwalPelajaran.showAll');
-
             Route::get('/get-guru-pengajar/{mataPelajaranId}', [JadwalPelajaranController::class, 'getGuruPengajar']);
+            Route::get('siswa', [UserController::class, 'siswaIndex'])->name('siswa.index');
         });
     });
 });

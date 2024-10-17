@@ -130,4 +130,10 @@ class UserController extends Controller
         $user->delete();
         return redirect()->route('user.index')->with('success', 'Berhasil menghapus data user.');
     }
+
+    public function siswaIndex()
+    {
+        $siswas = User::with('userDetail')->where('role', 'siswa')->get();
+        return view('siswa.index', compact('siswas'));
+    }
 }

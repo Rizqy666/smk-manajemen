@@ -45,5 +45,11 @@
             <span>DATA JADWAL PELAJARAN</span>
         </a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link <?php echo e(request()->routeIs('siswa.*') ? 'active' : ''); ?>" href="<?php echo e(route('siswa.index')); ?>">
+            <i class="ri  ri-alarm-line"></i>
+            <span>DATA SISWA</span>
+        </a>
+    </li>
 </ul>
 <?php /**PATH C:\laragon\www\smk-management\resources\views/components/sidebar.blade.php ENDPATH**/ ?>
