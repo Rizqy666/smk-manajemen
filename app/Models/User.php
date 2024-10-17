@@ -41,4 +41,8 @@ class User extends Authenticatable
     {
         return $this->hasOne(UserDetail::class, 'user_id', 'id');
     }
+    public function pendaftaran()
+    {
+        return $this->hasOne(Pendaftaran::class);
+    }
 }

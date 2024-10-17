@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\JurusanController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\MataPelajaranController;
+use App\Http\Controllers\PendaftaranController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TahunAjaranController;
 
@@ -53,6 +54,9 @@ Route::middleware('auth')->group(function () {
             Route::get('jadwalPelajaran-all', [JadwalPelajaranController::class, 'showAllJadwal'])->name('jadwalPelajaran.showAll');
             Route::get('/get-guru-pengajar/{mataPelajaranId}', [JadwalPelajaranController::class, 'getGuruPengajar']);
             Route::get('siswa', [UserController::class, 'siswaIndex'])->name('siswa.index');
+        });
+        Route::middleware('role:siswa')->group(function () {
+            Route::resource('pendaftaran', PendaftaranController::class);
         });
     });
 });

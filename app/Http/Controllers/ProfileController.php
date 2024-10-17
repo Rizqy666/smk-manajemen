@@ -13,9 +13,9 @@ class ProfileController extends Controller
 {
     public function showCompleteProfileForm()
     {
-        $user = auth()->user(); // Mendapatkan user yang sedang login
-        $userDetail = $user->userDetail; // Mengambil detail user
-        $profileIncomplete = !$userDetail || !$userDetail->profile_complete; // Mengecek apakah profil sudah lengkap atau belum
+        $user = auth()->user();
+        $userDetail = $user->userDetail;
+        $profileIncomplete = !$userDetail || !$userDetail->profile_complete;
 
         return view('profile.complete', compact('userDetail', 'profileIncomplete'));
     }
