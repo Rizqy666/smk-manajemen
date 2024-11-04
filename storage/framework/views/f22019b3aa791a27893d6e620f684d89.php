@@ -65,13 +65,31 @@
         </li>
     <?php endif; ?>
     <?php if(auth()->user()->role == 'siswa'): ?>
-        <li class="nav-item">
-            <a class="nav-link <?php echo e(request()->routeIs('pendaftaran.*') ? 'active' : ''); ?>"
-                href="<?php echo e(route('pendaftaran.index')); ?>">
-                <i class="ri  ri-alarm-line"></i>
-                <span>PENDAFTARAN </span>
-            </a>
-        </li>
+        <?php
+            // Mengambil data pendaftaran berdasarkan user_id yang sesuai dengan pengguna yang sedang login
+            $pendaftaran = \App\Models\Pendaftaran::where('user_id', auth()->id())->first();
+        ?>
+
+        <?php if($pendaftaran && $pendaftaran->nisn): ?>
+            <!-- Cek apakah ada data pendaftaran dan NISN terisi -->
+            <li class="nav-item">
+                <a class="nav-link <?php echo e(request()->routeIs('pendaftaran.data') ? 'active' : ''); ?>"
+                    href="<?php echo e(route('pendaftaran.data')); ?>">
+                    <i class="ri ri-alarm-line"></i>
+                    <span>DATA PENDAFTARAN</span>
+                </a>
+            </li>
+        <?php else: ?>
+            <li class="nav-item">
+                <a class="nav-link <?php echo e(request()->routeIs('pendaftaran.index') ? 'active' : ''); ?>"
+                    href="<?php echo e(route('pendaftaran.index')); ?>">
+                    <i class="ri ri-alarm-line"></i>
+                    <span>PENDAFTARAN</span>
+                </a>
+            </li>
+        <?php endif; ?>
     <?php endif; ?>
+
+
 </ul>
 <?php /**PATH C:\laragon\www\smk-management\resources\views/components/sidebar.blade.php ENDPATH**/ ?>

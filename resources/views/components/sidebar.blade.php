@@ -65,12 +65,30 @@
         </li>
     @endif
     @if (auth()->user()->role == 'siswa')
-        <li class="nav-item">
-            <a class="nav-link {{ request()->routeIs('pendaftaran.*') ? 'active' : '' }}"
-                href="{{ route('pendaftaran.index') }}">
-                <i class="ri  ri-alarm-line"></i>
-                <span>PENDAFTARAN </span>
-            </a>
-        </li>
+        @php
+            // Mengambil data pendaftaran berdasarkan user_id yang sesuai dengan pengguna yang sedang login
+            $pendaftaran = \App\Models\Pendaftaran::where('user_id', auth()->id())->first();
+        @endphp
+
+        @if ($pendaftaran && $pendaftaran->nisn)
+            <!-- Cek apakah ada data pendaftaran dan NISN terisi -->
+            <li class="nav-item">
+                <a class="nav-link {{ request()->routeIs('pendaftaran.data') ? 'active' : '' }}"
+                    href="{{ route('pendaftaran.data') }}">
+                    <i class="ri ri-alarm-line"></i>
+                    <span>DATA PENDAFTARAN</span>
+                </a>
+            </li>
+        @else
+            <li class="nav-item">
+                <a class="nav-link {{ request()->routeIs('pendaftaran.index') ? 'active' : '' }}"
+                    href="{{ route('pendaftaran.index') }}">
+                    <i class="ri ri-alarm-line"></i>
+                    <span>PENDAFTARAN</span>
+                </a>
+            </li>
+        @endif
     @endif
+
+
 </ul>
