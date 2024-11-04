@@ -23,10 +23,7 @@
                     });
                 </script>
             <?php endif; ?>
-            <div class="d-flex justify-content-end mb-3">
-                <span
-                    class="badge text-bg-<?php echo e($pendaftarans->status == 'Pending' ? 'warning' : ($pendaftarans->status == 'Diterima' ? 'success' : 'danger')); ?>"><?php echo e($pendaftarans->status ?? 'Belum ada data'); ?></span>
-            </div>
+            
             <div class="card">
                 <div class="card-header">Detail Profile</div>
                 <div class="card-body">

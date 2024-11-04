@@ -70,7 +70,7 @@ class PendaftaranController extends Controller
 
         Pendaftaran::create($validated);
 
-        return redirect()->route('pendaftaran.index')->with('success', 'Berhasil melakukan pendaftaran.');
+        return redirect()->route('pendaftaran.data')->with('success', 'Berhasil melakukan pendaftaran.');
     }
 
     /**
@@ -103,5 +103,13 @@ class PendaftaranController extends Controller
     public function destroy(Pendaftaran $pendaftaran)
     {
         //
+    }
+    public function data()
+    {
+        $pendaftarans = Pendaftaran::where('user_id', auth()->user()->id)->first();
+        $jurusans = Jurusan::all();
+        $user = auth()->user();
+        $userDetail = $user->userDetail;
+        return view('pendaftaran.data', compact('pendaftarans', 'jurusans', 'userDetail'));
     }
 }

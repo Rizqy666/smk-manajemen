@@ -57,6 +57,7 @@ Route::middleware('auth')->group(function () {
         });
         Route::middleware('role:siswa')->group(function () {
             Route::resource('pendaftaran', PendaftaranController::class);
+            Route::get('/pendaftaran-data', [PendaftaranController::class, 'data'])->name('pendaftaran.data');
         });
     });
 });
